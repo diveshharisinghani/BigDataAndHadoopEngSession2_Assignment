@@ -1,0 +1,99 @@
+Task 1>>>>>>>>>>>>>>>>>>>
+
+// checking whether the asked directory exists or not:>>>>>>>>>>>>>>>
+
+[acadgild@localhost ~]$ hdfs dfs -ls /
+18/06/07 09:19:42 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Found 5 items
+drwxr-xr-x   - acadgild supergroup          0 2018-05-30 00:27 /hadoopdata
+drwxr-xr-x   - acadgild supergroup          0 2018-05-19 13:28 /hbase
+drwxr-xr-x   - acadgild supergroup          0 2018-02-02 12:49 /sqoopout111
+drwxrwx---   - acadgild supergroup          0 2018-02-09 11:35 /tmp
+drwxr-xr-x   - acadgild supergroup          0 2018-02-09 14:50 /user
+
+
+
+[acadgild@localhost ~]$ hdfs dfs -ls /user
+18/06/07 09:42:11 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Found 1 items
+drwxr-xr-x   - acadgild supergroup          0 2018-02-09 14:50 /user/hive
+[acadgild@localhost ~]$ hdfs dfs -ls /user/acadgild
+18/06/07 09:42:29 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+ls: `/user/acadgild': No such file or directory
+
+// /user/acadgild not founf hence creating directory as specified>>>>>>>>>>>>>>>>>.
+
+[acadgild@localhost ~]$ hdfs dfs -mkdir /user/acadgild
+18/06/07 09:44:25 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+You have new mail in /var/spool/mail/acadgild
+[acadgild@localhost ~]$ hdfs dfs -mkdir /user/acadgild/hadoop
+18/06/07 09:44:35 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+
+
+
+Task 2>>>>>>>>>>>>>>>>>>>>>>>>...
+
+
+[acadgild@localhost ~]$ nano wor-count.txt
+You have new mail in /var/spool/mail/acadgild
+[acadgild@localhost ~]$ hdfs dfs -rm /user/acadgild/word-count.txt
+18/06/07 09:51:07 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+rm: `/user/acadgild/word-count.txt': Is a directory
+[acadgild@localhost ~]$ hdfs dfs -rm -r  /user/acadgild/word-count.txt
+18/06/07 09:51:26 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+18/06/07 09:51:27 INFO fs.TrashPolicyDefault: Namenode trash configuration: Deletion interval = 0 minutes, Emptier interval = 0 minutes.
+Deleted /user/acadgild/word-count.txt
+
+[acadgild@localhost ~]$ hdfs dfs -put word-count.txt /user/acadgild/
+18/06/07 09:52:54 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[acadgild@localhost ~]$ hdfs dfs -cat /user/acadgild/word-count.txt
+18/06/07 11:42:54 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Hadoop is the Elephant King!
+A yellow and elegant thing.
+He never forgets
+Useful data, or lets
+An extraneous element cling!
+You have new mail in /var/spool/mail/acadgild
+
+
+Task 3>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
+
+
+[acadgild@localhost ~]$ nano max-temp.txt      // creating a file in local FS
+You have new mail in /var/spool/mail/acadgild
+[acadgild@localhost ~]$ 
+[acadgild@localhost ~]$ gedit max-temp.txt
+You have new mail in /var/spool/mail/acadgild
+[acadgild@localhost ~]$ ls
+Assignment1      eclipse            Music                  test.txt
+Assignment1.doc  eclipse-workspace  Pictures               Videos
+Assignment1.pdf  error.txt          pig_1526716500704.log  wor-count.txt
+demo.txt         install            Public                 word-count.txt
+Desktop          max-temp.txt       Templates
+Documents        max-temp.txt~      test1.txt
+Downloads        merged.txt         testAppend.txt
+[acadgild@localhost ~]$ cat max-temp.txt
+10-10-1991,10
+11-10-1991,20
+12-10-1991,30
+13-10-1991,45
+14-10-1991,24
+15-10-1991,43
+16-10-1991,24
+17-10-1991,12
+18-10-1991,26
+19-10-1991,40
+20-10-1991,50
+21-10-1991,32
+
+[acadgild@localhost ~]$ hdfs dfs  -put  max-temp.txt   /user/acadgild/        // putting file from local file system to hdfs
+18/06/07 12:02:16 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+
+
+
+Task 4>>>>>>>>>>>>>>>>>>>>>>>.
+[acadgild@localhost ~]$  hdfs dfs -chmod 777 /user/acadgild/max-temp.txt  //changing the permission of the file.
+18/06/07 12:05:35 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+You have new mail in /var/spool/mail/acadgild
+[acadgild@localhost ~]$ 
+
